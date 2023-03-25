@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="./signup.css">
+</head>
+<body>
+    <div id="Main">
+        <form id="form" class="signup">
+            <h3 id="signup">Sign-up</h3>
+            <input id="email" class="input" type="email" placeholder="Enter Email">
+            <input id="pswrd" class="input" type="password" placeholder="Enter Password">
+            <p id="terms">By signing up,I accept the Terms of service and acknowledge the Privacy Policy.</p>
+            <input id="signup-form"   class="input" type="submit" value="Sign-up" >  
+        </form>
+    </div>
+</body>
+<!-- <script src="./scripts/signup.js"></script> -->
+
+</html>
+<script>
+    const signupForm = document.querySelector('#signup-form');
+
+  signupForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(signupForm);
+  const userData = {};
+
+//   for (const [key, value] of formData.entries()) {
+//     userData[key] = value;
+//   }
+  let email=document.getElementById("email");
+  userData.email=email.value;
+
+  let pswrd=document.getElementById("pswrd");
+  userData.password=pswrd.value;
+  console.log(userData);
+
+  fetch('http://localhost:8080/user/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    // Handle successful signup response here
+    alert("You have successfully signed up");
+    <a href="signin.html"></a>
+  })
+  .catch(error => {
+    console.error('There was a problem with the signup request:', error);
+    // Handle error response here
+    alert("Please provide valid info");
+  });
+});
+
+</script>

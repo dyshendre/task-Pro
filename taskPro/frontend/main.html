@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task Planner</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		/* Styles for the task planner */
+        /* Styles for the task planner */
+
+/* body {
+  font-family: Arial, sans-serif;
+} */
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+form {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+form label,
+form input,
+form select {
+  display: block;
+  margin-bottom: 8px;
+}
+
+form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+	</style>
+</head>
+<body>
+	<body>
+        <h1>Task Planner</h1>
+    
+        <!-- Sprint form -->
+        <form id="sprint-form">
+            <h2>Create a Sprint</h2>
+            <label for="sprint-name">Sprint Name:</label>
+            <input type="text" id="sprint-name" name="sprint-name" required>
+            <input type="submit" value="Create">
+        </form>
+    
+        <!-- Task form -->
+        <form id="task-form">
+            <h2>Add a Task to Sprint</h2>
+            <label for="task-type">Task Type:</label>
+            <select id="taskType" name="task-type" required>
+                <option value="">-- Select Task Type --</option>
+                <option value="bug">Bug</option>
+                <option value="feature">Feature</option>
+                <option value="story">Story</option>
+            </select>
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="taskName" name="task-name" required>
+            <label for="assignee">Assignee:</label>
+            <input type="text" id="assignee" name="assignee" required>
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="">-- Select Status --</option>
+                <option value="todo">To Do</option>
+                <option value="inprogress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <label for="sprint">Sprint:</label>
+            <!-- <select id="sprint" name="sprint" >
+                <option value="">-- Select Sprint --</option>
+                Sprint options will be dynamically added here
+            </select> -->
+            <input type="submit" value="Add Task" id="addTask">
+        </form>
+    
+        <!-- Sprint tasks table -->
+        <h2>Sprint Tasks</h2>
+        <table id="sprint-tasks">
+            <thead>
+                <tr>
+                    <th>Task Type</th>
+                    <th>Task Name</th>
+                    <th>Assignee</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="sprint-tbody">
+                <!-- Sprint tasks will be dynamically added here -->
+            </tbody>
+        </table>
+    
+        <!-- User tasks table -->
+        <h2>User Tasks</h2>
+        <form id="user-form">
+            <label for="user">Select User:</label>
+            <select id="user" name="user" required>
+                <option value="">-- Select User --</option>
+                <!-- User options will be dynamically added here -->
+            </select>
+            <input type="submit" value="Show Tasks">
+        </form>
+        <table id="user-tasks">
+            <thead>
+                <tr>
+                    <th>Task Type</th>
+                    <th>Task Name</th>
+                    <th>Assignee</th>
+                    <th>Status</th>
+                    <th>Sprint</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User tasks will be dynamically added here -->
+            </tbody>
+        </table>
+    
+       
+    </body>
+     <script src="main.js"></script>

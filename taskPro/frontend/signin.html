@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="./signin.css">
+</head>
+<body>
+    <div id="main">
+        <form id="loginform2" class="Form">
+            <h3 id="login">Sign in</h3>
+            <input id="email" class="Input" type="email" placeholder="User-Email">
+            <input id="pswrd" class="Input" type="password" placeholder="Password">
+            <div id="mid">
+                <input id="checkbox" type="checkbox" name="" id="checkbox">
+                <a href="">Lost your password?</a>
+            </div>
+            <input type="submit" class="Input" value="Sign in" id="signin-form">   
+        </form>
+    </div>
+</body>
+<!-- <script src="./scripts/signin.js"></script> -->
+</html>
+<script>
+    const signinForm = document.querySelector('#signin-form');
+
+signinForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+//   const formData = new FormData(signinForm);
+//   const userData = {};
+
+//   for (const [key, value] of formData.entries()) {
+//     userData[key] = value;
+//   }
+  let email=document.getElementById("email");
+  userData.email=email.value;
+
+  let pswrd=document.getElementById("pswrd");
+  userData.password=pswrd.value;
+
+  fetch('http://localhost:8080/user/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    // Handle successful signin response here
+    alert("Sign in successfull");
+    <a href="main.html"></a>
+  })
+  .catch(error => {
+    console.error('There was a problem with the signin request:', error);
+    // Handle error response here
+    alert("Sign in failed")
+  });
+});
+
+</script>
